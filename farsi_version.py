@@ -1,23 +1,23 @@
 class TicTacToe2:
-    """A Tic Tac Toe game implementation with 1-9 cell numbering.
+    """یک بازی Tic Tac Toe (دوز) با شماره‌گذاری 1 تا 9 برای خانه‌ها.
     
-    This class implements a complete Tic Tac Toe game where players
-    take turns selecting cells numbered from 1 to 9.
+    این کلاس یک بازی دوز را پیاده‌سازی می‌کند که در آن بازیکنان به نوبت
+    خانه‌های شماره‌گذاری شده از 1 تا 9 را انتخاب می‌کنند.
     
     Attributes:
-        board (list): A list of 10 elements (index 0 is not used)
-        current_player (str): The current player ('X' or 'O')
+        board (list): لیستی از 10 عنصر (ایندکس 0 استفاده نمی‌شود)
+        current_player (str): بازیکن فعلی ('X' یا 'O')
     """
     
     def __init__(self) -> None:
-        """Initialize the game with an empty board and starting player 'X'."""
-        self.board = [' '] * 10  # Index 0 is not used
+        """مقداردهی اولیه بازی با صفحه خالی و بازیکن اول 'X'."""
+        self.board = [' '] * 10  # ایندکس 0 استفاده نمی‌شود
         self.current_player = 'X'
     
     def show_board(self) -> None:
-        """Display the game board in a graphical format.
+        """صفحه بازی را به صورت گرافیکی نمایش می‌دهد.
         
-        Example output:
+        خروجی نمونه:
           X|O|X
           -----
           O|X| 
@@ -33,45 +33,45 @@ class TicTacToe2:
         print()
     
     def swap_players(self) -> str:
-        """Switch the current player and return the new player.
+        """بازیکن فعلی را تغییر می‌دهد و بازیکن جدید را برمی‌گرداند.
         
         Returns:
-            str: The new current player ('X' or 'O')
+            str: بازیکن جدید ('X' یا 'O')
         """
         self.current_player = 'O' if self.current_player == 'X' else 'X'
         print(f"Current player: {self.current_player}")
         return self.current_player
     
     def is_board_full(self) -> bool:
-        """Check if all cells on the board are occupied.
+        """بررسی می‌کند آیا همه خانه‌های صفحه پر شده‌اند یا خیر.
         
         Returns:
-            bool: True if the board is full, False otherwise
+            bool: True اگر صفحه پر باشد، False در غیر این صورت
         """
         return ' ' not in self.board[1:]
     
     def fix_spot(self, cell: int, player: str) -> None:
-        """Place a player's mark in the specified cell.
+        """علامت بازیکن را در خانه مشخص شده قرار می‌دهد.
         
         Args:
-            cell (int): Cell number (1-9)
-            player (str): Player identifier ('X' or 'O')
+            cell (int): شماره خانه (1 تا 9)
+            player (str): بازیکن ('X' یا 'O')
         """
         self.board[cell] = player
     
     def has_player_won(self, player: str) -> bool:
-        """Check if the specified player has won the game.
+        """بررسی می‌کند آیا بازیکن مشخص شده برنده شده است یا خیر.
         
         Args:
-            player (str): Player to check ('X' or 'O')
+            player (str): بازیکنی که باید بررسی شود ('X' یا 'O')
             
         Returns:
-            bool: True if the player has won, False otherwise
+            bool: True اگر بازیکن برنده شده باشد، False در غیر این صورت
         """
         win_combinations = [
-            (1, 2, 3), (4, 5, 6), (7, 8, 9),  # Rows
-            (1, 4, 7), (2, 5, 8), (3, 6, 9),  # Columns
-            (1, 5, 9), (3, 5, 7)               # Diagonals
+            (1, 2, 3), (4, 5, 6), (7, 8, 9),  # سطرها
+            (1, 4, 7), (2, 5, 8), (3, 6, 9),  # ستون‌ها
+            (1, 5, 9), (3, 5, 7)               # قطرها
         ]
         
         for combo in win_combinations:
@@ -80,10 +80,10 @@ class TicTacToe2:
         return False
     
     def start(self) -> None:
-        """Start the game and manage the main game loop.
+        """بازی را شروع می‌کند و حلقه اصلی بازی را مدیریت می‌نماید.
         
-        This method continuously takes input from players until
-        the game ends (win or draw).
+        این متد تا زمانی که بازی به پایان برسد (برد یا تساوی)
+        از بازیکنان ورودی دریافت می‌کند.
         """
         print("Welcome to Tic Tac Toe!")
         print("Enter a number between 1-9 to make your move:")
